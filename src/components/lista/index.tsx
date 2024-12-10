@@ -38,7 +38,10 @@ export default function Lista({dados}: ListaProps): React.JSX.Element {
   };
 
   const formatDate = (createdAt: string) => {
-    const [date, time] = createdAt.split('T');
+    //setar -3 horas antes de formatar
+    const Atual = new Date(createdAt);
+    Atual.setHours(Atual.getHours() - 3);
+    const [date, time] = Atual.toISOString().split('T');
     const formattedDate = date.split('-').reverse().join('/');
     const formattedTime = time.split('.')[0];
     return `${formattedDate} ${formattedTime}`;
@@ -57,13 +60,13 @@ export default function Lista({dados}: ListaProps): React.JSX.Element {
             {dados.price_usd}
           </Text>
         </Text>
+      </View>
         <Text style={styles.texto}>
           Valor em Real:{' '}
           <Text style={{fontWeight: 'bold', color: '#f1fa8c'}}>
             {dados.price_br}
           </Text>
         </Text>
-      </View>
       <View style={styles.row1}>
         <Text style={styles.texto}>
           Hora(%): <Text style={styles.texto2}>{dados.porcentagem_hora}</Text>
@@ -80,7 +83,9 @@ export default function Lista({dados}: ListaProps): React.JSX.Element {
         Atualizado em:{' '}
         <Text style={styles.texto2}>{formatDate(dados.createdAt)}</Text>
       </Text>
-      <Button title="Histórico" onPress={handleTag} color="#bd93f9" />
+      <View style={{marginTop: 15}}>
+      <Button title="Histórico" onPress={handleTag} color="#bd93f9"/>
+      </View>
     </View>
   );
 }
@@ -89,9 +94,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#282a36',
-    padding: 3,
+    padding: 10,
     marginVertical: 10,
     elevation: 5,
+    borderRadius: 7,
+    gap: 7,
   },
   texto: {
     color: '#fff',

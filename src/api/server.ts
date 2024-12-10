@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const Request = axios.create({
-  baseURL: 'http://189.5.194.55:3035/crypto',
+  baseURL: 'https://cryptoserver.kingdevtec.com/crypto',
   headers: {
     'Content-Type': 'application/json',
   },

@@ -4,7 +4,7 @@ import React from 'react';
 import {Text, View, StyleSheet, FlatList} from 'react-native';
 import Api from '../../api/server';
 import Card from '../../components/card';
-// import FontAwesome6 from '@react-native-vector-icons/fontawesome6';
+
 
 // Defina o tipo para os parâmetros da rota
 type RootStackParamList = {
@@ -32,7 +32,7 @@ export default function Crypto(): React.JSX.Element {
     <View style={styles.container}>
       <View style={styles.BoxTitle}>
         <View style={{gap: 10, flexDirection: 'row', alignItems: 'center'}}>
-          <Text style={styles.texto}>{Principal.nome}</Text>
+          <Text style={styles.textoTitle} >{Principal.nome}</Text>
           <Text style={styles.texto}>{Principal.tag}</Text>
         </View>
         <Text style={styles.texto}>
@@ -64,7 +64,7 @@ export default function Crypto(): React.JSX.Element {
           </Text>
         </View>
       </View>
-      <View style={{flex: 1, marginBottom: 60}}>
+      <View style={{flex: 1, marginBottom: 10}}>
         <FlatList
           data={Data}
           keyExtractor={item => item.id.toString()}
@@ -91,6 +91,7 @@ const styles = StyleSheet.create({
     marginInline: 5,
     marginTop: 10,
     marginBottom: 15,
+    gap: 7,
   },
   row1: {
     // flex: 1,
@@ -99,6 +100,12 @@ const styles = StyleSheet.create({
   },
   texto: {
     color: '#fff',
+  },
+  textoTitle: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 25,
+    fontFamily: 'roboto',
   },
   texto2: {
     color: '#bd93f9',

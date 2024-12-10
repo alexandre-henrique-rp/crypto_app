@@ -38,9 +38,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#282a36',
-    padding: 3,
+    padding: 10,
     marginVertical: 10,
     elevation: 5,
+    gap: 7,
+    borderRadius: 7,
   },
   texto: {
     color: '#fff',
